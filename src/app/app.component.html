@@ -1,0 +1,17 @@
+<ng-container *ngIf="currentRoute === 'main'; else whHeader">
+  <app-header></app-header>
+</ng-container>
+<ng-template #whHeader>
+  <app-wh-header></app-wh-header>
+</ng-template>
+<app-sidebar></app-sidebar>
+<div
+  class="main-content"
+  *ngIf="currentRoute !== 'main' && currentRoute !== 'about'; else pad"
+>
+  <router-outlet></router-outlet>
+</div>
+<ng-template #pad>
+  <router-outlet></router-outlet>
+</ng-template>
+<app-footer></app-footer>

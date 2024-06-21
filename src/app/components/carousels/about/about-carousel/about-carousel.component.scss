@@ -1,0 +1,46 @@
+@import "../../../../../styles/variables.scss";
+
+.about-carousel {
+  .title {
+    text-align: center;
+    font-size: 48px;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+  }
+  /* CSS */
+  ::ng-deep .p-carousel-indicators {
+    display: none;
+  }
+  ::ng-deep .p-carousel {
+    .carousel-title {
+      font-size: 18px;
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+    }
+    .desc {
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+    }
+  }
+  ::ng-deep .p-carousel .p-carousel-content {
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+  }
+}
+::ng-deep .p-carousel .p-carousel-content .p-carousel-prev {
+  display: none;
+}
+::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
+  display: none;
+}
+
+::ng-deep .p-carousel .p-carousel-content .p-carousel-prev:enabled:hover,
+::ng-deep .p-carousel .p-carousel-content .p-carousel-next:enabled:hover {
+  color: black;
+  border-color: black;
+  background: transparent;
+  cursor: pointer;
+}

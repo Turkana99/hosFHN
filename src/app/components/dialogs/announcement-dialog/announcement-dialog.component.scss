@@ -1,0 +1,58 @@
+@import "../../../../styles/variables.scss";
+
+
+.announcement {
+  height: 100%;
+  background-image: url(../../../../assets/images/annDialog.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  position: relative;
+  .overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+  .close-btn {
+    padding: 20px !important;
+    outline: none;
+    border: none !important;
+    background-color: transparent !important;
+    color: white;
+    font-size: 26px;
+  }
+  .dialog-content {
+    padding-top: 120px;
+    color: white !important;
+    h2 {
+      color: white;
+      font-size: 27px;
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+    }
+    p {
+      color: white;
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+    }
+  }
+  ::ng-deep .p-component {
+    padding: 10px 20px;
+  }
+  ::ng-deep .p-button {
+    width: 100%;
+    border: 1px solid white;
+    color: white;
+    background-color: transparent;
+    font-size: 14px;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+  }
+}

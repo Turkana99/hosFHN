@@ -1,0 +1,176 @@
+<div class="w-100 content header d-flex justify-content-center py-2 m-0">
+  <nav class="w-100 navbar navbar-expand-lg">
+    <div class="container-fluid p-0 m-0">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img
+          class="white-logo"
+          src="../../../assets/images/FHNLogo.svg"
+          alt="Logo"
+          [ngStyle]="{ opacity: whiteLogo ? 0 : 1 }"
+        />
+        <img
+          class="white-logo"
+          src="../../../assets/images/FHNLogoWhite.svg"
+          alt="Logo"
+          [ngStyle]="{ opacity: whiteLogo ? 1 : 0 }"
+        />
+      </a>
+      <button
+        class="navbar-toggler custom-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse d-flex justify-content-end"
+        id="navbarNavDropdown"
+      >
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="main"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="router-link-active"
+              >Ana Səhifə</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="about"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="router-link-active"
+              >Haqqımızda</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="sections"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="router-link-active"
+              >Şöbələr</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="doctors"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="router-link-active"
+              >Həkimlər</a
+            >
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Xəbərlər
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="news"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  routerLinkActive="router-link-active"
+                  >Xəbər</a
+                >
+              </li>
+              <li><a class="dropdown-item" href="#">Uğurlarımız</a></li>
+              <li><a class="dropdown-item" href="#">Maarifləndirmə</a></li>
+              <li><a class="dropdown-item" href="#">Elanlar</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Qalereya
+            </a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+              style="color: black"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="gallery"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  routerLinkActive="router-link-active"
+                  >Foto</a
+                >
+              </li>
+              <li><a class="dropdown-item" href="#">Video</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://epb.fhn.gov.az/" target="_blank"
+              >Onlayn Laboratoriya</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="contact"
+              [routerLinkActiveOptions]="{ exact: true }"
+              routerLinkActive="router-link-active"
+              >Əlaqə</a
+            >
+          </li>
+          <li class="nav-item search ps-3">
+            <form
+              class="search-container"
+              action="//llamaswill.tumblr.com/search"
+            >
+              <input
+                id="search-box"
+                type="text"
+                class="search-box"
+                name="search"
+              />
+              <span class="fas fa-search search-icon"></span>
+              <input type="submit" id="search-submit" />
+            </form>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Az
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li>
+                <a class="dropdown-item">En</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Ru</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>

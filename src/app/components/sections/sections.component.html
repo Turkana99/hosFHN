@@ -1,0 +1,33 @@
+<div
+  class="sections content d-flex flex-column justify-content-center align-items-center"
+>
+  <h1>Şöbələr</h1>
+  <div class="col-lg-7 col-md-11 col-sm-12">
+    <p class="desc py-3">
+      Lorem ipsum dolor sit amet adipisicing elit. Rem iusto, et magni vel eos
+      delectus quidem error cupiditate similique necessitatibus nihil unde
+      aspernatur eum dignissimos mollitia incidunt.
+    </p>
+  </div>
+
+  <div class="w-100 row d-flex justify-content-between px-0 pb-5 m-0">
+    <div
+      class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+      *ngFor="let sec of sections"
+    >
+      <div class="w-100">
+        <a [routerLink]="['/section-detail', sec.title]">
+          <mat-card class="example-card">
+            <img mat-card-image [src]="sec.img" [alt]="sec.img" />
+            <mat-card-content class="pt-4 px-0">
+              <b class="py-2">{{ sec.title }}</b>
+              <p class="pt-2">
+                {{ sec.description }}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
