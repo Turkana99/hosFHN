@@ -61,16 +61,18 @@ export class MainComponent implements AfterViewInit {
   constructor(public dialog: MatDialog) {}
 
   ngAfterViewInit() {
-    setTimeout(() => {
-      this.dialog.open(AnnouncementDialogComponent, {
-        width: '628px',
-        height: '380px',
-        position: {
-          top: `10%`,
-        },
-      });
-    }, 1000);
+    const hasShownAnnouncement = sessionStorage.getItem('hasShownAnnouncement');
+    if (!hasShownAnnouncement) {
+      setTimeout(() => {
+        this.dialog.open(AnnouncementDialogComponent, {
+          width: '628px',
+          height: '380px',
+          position: {
+            top: `10%`,
+          },
+        });
+        sessionStorage.setItem('hasShownAnnouncement', 'true');
+      }, 1000);
+    }
   }
-
-
 }

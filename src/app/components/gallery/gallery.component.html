@@ -1,1 +1,22 @@
-<p>gallery works!</p>
+<div class="photo content">
+  <h1 class="title py-3">Foto</h1>
+  <div class="w-100 row d-flex justify-content-start pb-5 m-0">
+    <div
+      class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+      *ngFor="let photo of photos"
+    >
+      <a [routerLink]="['/gallery-detail', photo.title]">
+        <div class="w-100">
+          <mat-card class="example-card">
+            <img mat-card-image [src]="photo.img" [alt]="photo.img" />
+            <mat-card-content class="pt-3 px-0">
+              <p>
+                {{ photo.title }}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

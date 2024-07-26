@@ -11,32 +11,31 @@
     quaerat repudiandae nisi ad corrupti earum odit magni ipsa quidem obcaecati.
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga accusantium
     iusto asperiores dolorum distinctio itaque voluptas minus rerum cum, quasi
-    eligendi vitae repellat. Labore nobis voluptatem ad amet voluptate rem!
+    eligendi vitae repellat. Labore nobis voluptatem ad amet voluptate rem! Fuga
+    accusantium iusto asperiores dolorum distinctio itaque voluptas minus rerum
+    cum, quasi eligendi vitae repellat. Labore nobis voluptatem ad amet
+    voluptate rem! Non tempora cumque inventore vitae explicabo numquam voluptas
+    maiores praesentium autem.
   </p>
 
-  <div class="doctors py-5 px-0">
-    <h3>Həkimlərimiz</h3>
-    <div class="w-100 row d-flex justify-content-between px-0 pb-5 m-0">
-      <div
-        class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
-        *ngFor="let doc of doctors"
-      >
-        <div class="w-100">
-          <a [routerLink]="['/section-detail', doc.name]">
-            <mat-card class="example-card">
-              <div class="shape-outer bevel">
-                <img mat-card-image [src]="doc.img" [alt]="doc.img" />
-              </div>
-              <mat-card-content class="pt-4 px-0">
-                <p class="pt-2">
-                  {{ doc.name }}
-                </p>
-                <b class="py-2">{{ doc.position }}</b>
-              </mat-card-content>
-            </mat-card>
-          </a>
-        </div>
+  <div class="doctors">
+    <h1 class="title py-3">Həkimlərimiz</h1>
+    <div class="doctors-grid">
+      <div class="my-card" *ngFor="let doc of doctors">
+        <mat-card class="example-card">
+          <img mat-card-image [src]="doc.img" [alt]="doc.img" />
+          <mat-card-content class="pt-3 px-0">
+            <p>{{ doc.position }}</p>
+            <h3 class="m-0">{{ doc.name}}</h3>
+          </mat-card-content>
+        </mat-card>
       </div>
     </div>
   </div>
+
+  <a routerLink="/doctors">
+    <div class="d-flex justify-content-center pb-5">
+      <p-button label="Bütün həkimlər"></p-button>
+    </div>
+  </a>
 </div>

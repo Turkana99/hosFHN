@@ -1,0 +1,112 @@
+@import "../../../styles/variables.scss";
+
+.content {
+  padding: 0px 12vw;
+}
+
+.news-detail {
+  font-size: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  color: $title-color;
+
+  .title {
+    i {
+      font-size: 26px;
+    }
+  }
+
+  a {
+    text-decoration: none !important;
+    color: $title-color;
+  }
+
+  p {
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    line-height: 30px;
+  }
+
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+
+    .my-card {
+      &:nth-child(3n + 1) {
+        padding-left: 0;
+      }
+
+      &:nth-child(3n) {
+        padding-right: 0;
+      }
+
+      .example-card {
+        min-height: 480px;
+        border: none;
+        box-shadow: none;
+
+        img {
+          max-width: 100%;
+          max-height: 315px;
+          border-radius: 32px;
+        }
+
+        span {
+          color: $date-color;
+          font-size: 12px;
+        }
+
+        h3 {
+          font-size: 18px;
+          color: $news-text-color;
+          font-weight: 500;
+          line-height: 25px;
+          min-height: 60px;
+        }
+
+        p {
+          font-size: 14px;
+          color: $news-text-color;
+        }
+
+        ::ng-deep .p-button {
+          padding: 10px 25px;
+          border: 1px solid $border-color;
+          background-color: transparent;
+          color: $news-text-color;
+          font-size: 16px;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .news-grid {
+      grid-template-columns: repeat(2, 1fr);
+
+      .my-card {
+        &:nth-child(2n + 1) {
+          padding-left: 0;
+        }
+
+        &:nth-child(2n) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .news-grid {
+      grid-template-columns: 1fr;
+
+      .my-card {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+    }
+  }
+}

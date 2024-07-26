@@ -1,0 +1,27 @@
+<div class="information content">
+    <h1 class="title py-3">Maarifləndirmə</h1>
+    <div class="w-100 row d-flex justify-content-start p-0 m-0">
+      <div
+        class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+        *ngFor="let info of information"
+      >
+        <div class="w-100">
+          <mat-card class="example-card">
+            <img mat-card-image [src]="info.img" [alt]="info.img" />
+            <mat-card-content class="pt-3 px-0">
+              <span>{{ info.date }}</span>
+              <h3 class="m-0">{{ info.title }}</h3>
+              <p>
+                {{ info.description }}
+              </p>
+              <a  [routerLink]="['/information-detail', info.title]">
+                <div class="py-3">
+                  <p-button label="Daha ətraflı" /></div
+              ></a>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,43 @@
+<div class="announcement-detail content">
+  <a routerLink="/announcements">
+    <div class="title">
+      <i class="fa-solid fa-arrow-left pe-3"></i> {{ title }}
+    </div>
+  </a>
+  <app-announcement-detail-carousel></app-announcement-detail-carousel>
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+    explicabo voluptates, deserunt laboriosam veniam repellendus! Saepe
+    distinctio itaque non dignissimos libero facere quas harum ab voluptatibus
+    nam, voluptatem eius laudantium. Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Ipsam cum non debitis illo ex id, quibusdam ullam vitae
+    accusamus officia aut necessitatibus molestias, ipsum explicabo nostrum
+    itaque atque sapiente error! Lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Vero impedit atque, laboriosam recusandae officia dolorem
+    cumque qui aspernatur fugiat eum accusantium veritatis deleniti molestias
+    voluptatem nihil voluptates dignissimos, quaerat necessitatibus!
+  </p>
+  <div class="announcement">
+    <h1 class="title py-3">Digər elanlar</h1>
+    <div class="announcement-grid">
+      <div
+        class="my-card"
+        *ngFor="let announce of announcements"
+      >
+        <mat-card class="example-card">
+          <img mat-card-image [src]="announce.img" [alt]="announce.img" />
+          <mat-card-content class="pt-3 px-0">
+            <span>{{ announce.date }}</span>
+            <h3 class="m-0">{{ announce.title }}</h3>
+            <p>{{ announce.description }}</p>
+            <a [routerLink]="['/announcement-detail', announce.title]">
+              <div class="py-3">
+                <p-button label="Daha ətraflı"></p-button>
+              </div>
+            </a>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

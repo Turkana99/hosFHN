@@ -10,6 +10,16 @@ import { OnlineLaboratoryComponent } from './components/online-laboratory/online
 import { ContactComponent } from './components/contact/contact.component';
 import { SectionDetailComponent } from './components/section-detail/section-detail.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { InformationComponent } from './components/information/information.component';
+import { SuccessesComponent } from './components/successes/successes.component';
+import { AnnouncementDetailComponent } from './components/announcement-detail/announcement-detail.component';
+import { InformationDetailComponent } from './components/information-detail/information-detail.component';
+import { SuccessesDetailComponent } from './components/successes-detail/successes-detail.component';
+import { NewsDetailComponent } from './components/news-detail/news-detail.component';
+import { GalleryDetailComponent } from './components/gallery-detail/gallery-detail.component';
+import { VideoDetailComponent } from './components/video-detail/video-detail.component';
+import { VideoComponent } from './components/video/video.component';
 
 const routes: Routes = [
   {
@@ -29,19 +39,41 @@ const routes: Routes = [
     path: 'sections',
     component: SectionsComponent,
   },
-  { path: 'section-detail/:title', component: SectionDetailComponent },
+  {
+    path: 'section-detail/:title',
+    component: SectionDetailComponent,
+  },
   {
     path: 'doctors',
     component: DoctorsComponent,
   },
-  { path: 'doctors-detail/:name', component: DoctorDetailsComponent },
+  {
+    path: 'doctor-detail/:name',
+    component: DoctorDetailsComponent,
+  },
   {
     path: 'news',
     component: NewsComponent,
   },
   {
+    path: 'news-detail/:title',
+    component: NewsDetailComponent,
+  },
+  {
     path: 'gallery',
     component: GalleryComponent,
+  },
+  {
+    path: 'gallery-detail/:title',
+    component: GalleryDetailComponent,
+  },
+  {
+    path: 'video',
+    component: VideoComponent,
+  },
+  {
+    path: 'video-detail/:title',
+    component: VideoDetailComponent,
   },
   {
     path: 'online-laboratory',
@@ -50,6 +82,30 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
+  },
+  {
+    path: 'announcements',
+    component: AnnouncementComponent,
+  },
+  {
+    path: 'announcement-detail/:title',
+    component: AnnouncementDetailComponent,
+  },
+  {
+    path: 'information',
+    component: InformationComponent,
+  },
+  {
+    path: 'information-detail/:title',
+    component: InformationDetailComponent,
+  },
+  {
+    path: 'successes',
+    component: SuccessesComponent,
+  },
+  {
+    path: 'successes-detail/:title',
+    component: SuccessesDetailComponent,
   },
 ];
 

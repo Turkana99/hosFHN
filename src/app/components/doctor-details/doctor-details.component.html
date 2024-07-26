@@ -1,1 +1,84 @@
-<p>doctor-details works!</p>
+<div class="doctor-detail content">
+  <a routerLink="/doctors">
+    <div class="title">
+      <i class="fa-solid fa-arrow-left pe-3"></i> Dr.{{ name }}
+    </div>
+  </a>
+  <div class="doc-info row pt-4">
+    <div class="doc-img col-lg-4 col-md-4 col-sm-12">
+      <div class="p-0 m-0 bevel">
+        <img src="../../../assets/images/doc3.svg" alt="" />
+      </div>
+
+      <p class="pt-4">Kardioloq</p>
+      <p class="py-2">Laboratoriya</p>
+    </div>
+    <div class="doc-about col-lg-8 col-md-8 col-sm-12">
+      <h3>Haqqında</h3>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+        voluptate itaque voluptas unde deleniti harum accusantium enim. At ab
+        quos incidunt, odit delectus, vel quaerat blanditiis iste aspernatur,
+        recusandae voluptatem. Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Consequatur a fugiat praesentium. Veniam quas atque
+        laudantium eligendi? Distinctio quia corrupti sint dolorem repellat
+        earum aliquid reprehenderit laboriosam? Vero, officia quasi?Lorem ipsum
+        dolor sit amet consectetur adipisicing elit. Vero optio reiciendis fuga
+        ad a, magni voluptate doloremque excepturi, impedit voluptatibus nobis!
+        Ex ut voluptas consectetur voluptatibus impedit incidunt explicabo
+        ducimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
+        nihil et tenetur voluptatibus labore atque ut ab assumenda! Magnam
+        explicabo expedita cum exercitationem architecto voluptas alias labore
+        ex, accusamus porro? Lorem ipsum dolor sit, amet consectetur adipisicing
+        elit. Repudiandae perferendis iusto tempora. Aperiam voluptatem ab
+        accusamus ex commodi, hic esse numquam cumque voluptate, iusto suscipit
+        quia, veritatis error molestias exercitationem? Vero optio reiciendis
+        fuga ad a, magni voluptate doloremque excepturi, impedit voluptatibus
+        nobis! Ex ut voluptas consectetur voluptatibus impedit incidunt
+        explicabo ducimus? Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Harum nihil et tenetur voluptatibus labore atque ut ab assumenda!
+        Magnam explicabo expedita cum exercitationem architecto voluptas alias
+        labore ex, accusamus porro? Lorem ipsum dolor sit, amet consectetur
+        adipisicing elit. Repudiandae perferendis iusto tempora. Aperiam
+        voluptatem ab accusamus ex commodi, hic esse numquam cumque voluptate,
+        iusto suscipit quia, veritatis error molestias exercitationem? Vero
+        optio reiciendis fuga ad a, magni voluptate doloremque excepturi,
+        impedit voluptatibus nobis! Ex ut voluptas consectetur voluptatibus
+        impedit incidunt explicabo ducimus? Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Harum nihil et tenetur voluptatibus labore
+        atque ut ab assumenda!
+      </p>
+    </div>
+  </div>
+
+  <app-doctor-detail-carousel></app-doctor-detail-carousel>
+  <div class="doctors pt-5 px-0">
+    <h3>Digər Həkimlərimiz</h3>
+    <div class="w-100 row d-flex justify-content-start px-0 pb-5 m-0">
+      <div
+        class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+        *ngFor="let doc of doctors"
+      >
+        <div class="w-100">
+          <a [routerLink]="['/section-detail', doc.name]">
+            <mat-card class="example-card">
+              <div class="shape-outer bevel">
+                <img mat-card-image [src]="doc.img" [alt]="doc.img" />
+              </div>
+              <mat-card-content class="pt-4 px-0">
+                <p class="pt-2">
+                  {{ doc.name }}
+                </p>
+                <b class="py-2">{{ doc.position }}</b>
+              </mat-card-content>
+            </mat-card>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a routerLink="/doctors">
+    <div class="d-flex justify-content-center pb-5">
+      <p-button label="Bütün həkimlər" /></div
+  ></a>
+</div>

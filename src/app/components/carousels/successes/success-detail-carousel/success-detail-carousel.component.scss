@@ -1,0 +1,55 @@
+@import "../../../../../styles/variables.scss";
+
+.success-detail-carousel {
+  .title {
+    text-align: center;
+    font-size: 48px;
+    font-family: "Inter", sans-serif;
+    font-weight: bold;
+  }
+  /* CSS */
+  ::ng-deep .p-carousel-indicators {
+    display: none;
+  }
+  ::ng-deep .p-carousel {
+    .carousel-title {
+      font-size: 18px;
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+    }
+    .desc {
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+    }
+  }
+  ::ng-deep .p-carousel .p-carousel-content {
+    ::ng-deep .relative {
+      padding: 0px 20px !important;
+    }
+    img {
+      width: 100%;
+      height: 410px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+  }
+  ::ng-deep .p-carousel .p-carousel-content .p-carousel-prev {
+    color: black !important;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 25px;
+  }
+  ::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
+    color: black !important;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 25px;
+  }
+  ::ng-deep .p-carousel .p-carousel-content .p-carousel-prev:enabled:hover,
+  ::ng-deep .p-carousel .p-carousel-content .p-carousel-next:enabled:hover {
+    color: black;
+    border-color: black;
+    background: transparent;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,27 @@
+<div class="successes content">
+    <h1 class="title py-3">Uğurlarımız</h1>
+    <div class="w-100 row d-flex justify-content-start p-0 m-0">
+      <div
+        class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+        *ngFor="let success of successes"
+      >
+        <div class="w-100">
+          <mat-card class="example-card">
+            <img mat-card-image [src]="success.img" [alt]="success.img" />
+            <mat-card-content class="pt-3 px-0">
+              <span>{{ success.date }}</span>
+              <h3 class="m-0">{{ success.title }}</h3>
+              <p>
+                {{ success.description }}
+              </p>
+              <a  [routerLink]="['/successes-detail', success.title]">
+                <div class="py-3">
+                  <p-button label="Daha ətraflı" /></div
+              ></a>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

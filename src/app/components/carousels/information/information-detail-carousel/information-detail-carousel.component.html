@@ -1,0 +1,23 @@
+<div class="information-detail-carousel">
+    <p-carousel
+      class="px-5 custom-carousel"
+      [value]="information"
+      [autoplayInterval]="2000"
+      [numVisible]="1"
+      [numScroll]="1"
+    >
+      <ng-template let-info pTemplate="item">
+        <div class="border-1 surface-border border-round my-2">
+          <div class="mb-3">
+            <div class="relative mx-auto">
+              <img
+                src="{{ info.image }}"
+                class="w-full border-round"
+              />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  

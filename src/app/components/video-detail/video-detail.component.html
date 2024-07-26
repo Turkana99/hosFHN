@@ -1,0 +1,32 @@
+<div class="gallery-detail content">
+  <a routerLink="/gallery">
+    <div class="title">
+      <i class="fa-solid fa-arrow-left pe-3"></i> {{ title }}
+    </div>
+  </a>
+
+  <div class="photos pt-5 px-0">
+    <div class="w-100 row d-flex justify-content-start px-0 pb-5 m-0">
+      <div
+        class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+        *ngFor="let video of video"
+      >
+        <div class="w-100">
+          <mat-card class="example-card">
+            <div class="shape-outer bevel">
+              <video controls>
+                <source [src]="video.video" type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <mat-card-content class="pt-4 px-0">
+              <p class="pt-2">
+                {{ video.title }}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

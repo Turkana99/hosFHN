@@ -82,15 +82,21 @@
               <li>
                 <a
                   class="dropdown-item"
-                  routerLink="news"
+                  routerLink="announcements"
                   [routerLinkActiveOptions]="{ exact: true }"
                   routerLinkActive="router-link-active"
-                  >Xəbər</a
+                  >Elanlar</a
                 >
               </li>
-              <li><a class="dropdown-item" href="#">Uğurlarımız</a></li>
-              <li><a class="dropdown-item" href="#">Maarifləndirmə</a></li>
-              <li><a class="dropdown-item" href="#">Elanlar</a></li>
+              <li>
+                <a class="dropdown-item" routerLink="successes">Uğurlarımız</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="information"
+                  >Maarifləndirmə</a
+                >
+              </li>
+              <li><a class="dropdown-item" routerLink="news">Xəbər</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -118,7 +124,7 @@
                   >Foto</a
                 >
               </li>
-              <li><a class="dropdown-item" href="#">Video</a></li>
+              <li><a class="dropdown-item"  routerLink="video">Video</a></li>
             </ul>
           </li>
           <li class="nav-item">

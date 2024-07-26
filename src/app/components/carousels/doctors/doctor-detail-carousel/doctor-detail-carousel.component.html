@@ -1,0 +1,23 @@
+<div class="certificate-carousel pt-4">
+    <p-carousel
+      class="px-5 custom-carousel"
+      [value]="certificates"
+      [autoplayInterval]="2000"
+      [numVisible]="2"
+      [numScroll]="1"
+    >
+      <ng-template let-cert pTemplate="item">
+        <div class="border-1 surface-border border-round my-2 pt-5 pb-2">
+          <div class="mb-3">
+            <div class="relative mx-auto">
+              <img
+                src="{{ cert.image }}"
+                class="w-full border-round"
+              />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  

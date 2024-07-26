@@ -1,0 +1,22 @@
+<div class="video content">
+  <h1 class="title py-3">Video</h1>
+  <div class="w-100 row d-flex justify-content-start pb-5 m-0">
+    <div
+      class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+      *ngFor="let video of video"
+    >
+      <a [routerLink]="['/video-detail', video.title]">
+        <div class="w-100">
+          <mat-card class="example-card">
+            <video [src]="video.video"></video>
+            <mat-card-content class="pt-3 px-0">
+              <p>
+                {{ video.title }}
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

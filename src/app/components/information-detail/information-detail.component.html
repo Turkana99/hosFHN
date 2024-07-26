@@ -1,0 +1,41 @@
+<div class="information-detail content">
+    <a routerLink="/information">
+      <div class="title">
+        <i class="fa-solid fa-arrow-left pe-3"></i> {{ title }}
+      </div>
+    </a>
+    <app-information-detail-carousel></app-information-detail-carousel>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
+      explicabo voluptates, deserunt laboriosam veniam repellendus! Saepe
+      distinctio itaque non dignissimos libero facere quas harum ab voluptatibus
+      nam, voluptatem eius laudantium. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Ipsam cum non debitis illo ex id, quibusdam ullam vitae
+      accusamus officia aut necessitatibus molestias, ipsum explicabo nostrum
+      itaque atque sapiente error! Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Vero impedit atque, laboriosam recusandae officia dolorem
+      cumque qui aspernatur fugiat eum accusantium veritatis deleniti molestias
+      voluptatem nihil voluptates dignissimos, quaerat necessitatibus!
+    </p>
+    <div class="information-detail">
+      <h1 class="title py-3">Digər xəbərlər</h1>
+      <div class="information-grid">
+        <div class="my-card" *ngFor="let info of information">
+          <mat-card class="example-card">
+            <img mat-card-image [src]="info.img" [alt]="info.img" />
+            <mat-card-content class="pt-3 px-0">
+              <span>{{ info.date }}</span>
+              <h3 class="m-0">{{ info.title }}</h3>
+              <p>{{ info.description }}</p>
+              <a [routerLink]="['/information-detail', info.title]">
+                <div class="py-3">
+                  <p-button label="Daha ətraflı"></p-button>
+                </div>
+              </a>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

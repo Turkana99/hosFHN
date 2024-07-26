@@ -1,1 +1,27 @@
-<p>doctors works!</p>
+<div class="doctors-list content">
+  <div class="doctors pt-3 px-0">
+    <h1 class="pb-3">Həkimlərimiz</h1>
+    <div class="w-100 row d-flex justify-content-start px-0 pb-5 m-0">
+      <div
+        class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
+        *ngFor="let doc of doctors"
+      >
+        <div class="w-100">
+          <a [routerLink]="['/doctor-detail', doc.name]">
+            <mat-card class="example-card">
+              <div class="shape-outer bevel">
+                <img mat-card-image [src]="doc.img" [alt]="doc.img" />
+              </div>
+              <mat-card-content class="pt-4 px-0">
+                <p class="pt-2">
+                  {{ doc.position }}
+                </p>
+                <b class="py-2">{{ doc.name }}</b>
+              </mat-card-content>
+            </mat-card>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

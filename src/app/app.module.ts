@@ -37,6 +37,23 @@ import { AboutCarouselComponent } from './components/carousels/about/about-carou
 import { SectionDetailComponent } from './components/section-detail/section-detail.component';
 import { SectionDetailCarouselComponent } from './components/carousels/section/section-detail-carousel/section-detail-carousel.component';
 import { DoctorDetailsComponent } from './components/doctor-details/doctor-details.component';
+import { DoctorDetailCarouselComponent } from './components/carousels/doctors/doctor-detail-carousel/doctor-detail-carousel.component';
+import { SuccessesComponent } from './components/successes/successes.component';
+import { InformationComponent } from './components/information/information.component';
+import { AnnouncementComponent } from './components/announcement/announcement.component';
+import { SuccessesDetailComponent } from './components/successes-detail/successes-detail.component';
+import { InformationDetailComponent } from './components/information-detail/information-detail.component';
+import { AnnouncementDetailComponent } from './components/announcement-detail/announcement-detail.component';
+import { NewsDetailComponent } from './components/news-detail/news-detail.component';
+import { InformationDetailCarouselComponent } from './components/carousels/information/information-detail-carousel/information-detail-carousel.component';
+import { SuccessDetailCarouselComponent } from './components/carousels/successes/success-detail-carousel/success-detail-carousel.component';
+import { NewsDetailCarouselComponent } from './components/carousels/news/news-detail-carousel/news-detail-carousel.component';
+import { AnnouncementDetailCarouselComponent } from './components/carousels/announcement/announcement-detail-carousel/announcement-detail-carousel.component';
+import { VideoComponent } from './components/video/video.component';
+import { VideoDetailComponent } from './components/video-detail/video-detail.component';
+import { GalleryDetailComponent } from './components/gallery-detail/gallery-detail.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
@@ -48,7 +65,9 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
     SectionsComponent,
     DoctorsComponent,
     NewsComponent,
+    NewsDetailComponent,
     GalleryComponent,
+    VideoComponent,
     OnlineLaboratoryComponent,
     ContactComponent,
     SidebarComponent,
@@ -61,7 +80,21 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
     AboutCarouselComponent,
     SectionDetailComponent,
     SectionDetailCarouselComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    DoctorDetailCarouselComponent,
+    SuccessesComponent,
+    SuccessesDetailComponent,
+    InformationComponent,
+    InformationDetailComponent,
+    AnnouncementComponent,
+    AnnouncementDetailComponent,
+    InformationDetailCarouselComponent,
+    SuccessDetailCarouselComponent,
+    NewsDetailCarouselComponent,
+    AnnouncementDetailCarouselComponent,
+    VideoComponent,
+    VideoDetailComponent,
+    GalleryDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +110,8 @@ import { DoctorDetailsComponent } from './components/doctor-details/doctor-detai
     CarouselModule,
     CardModule,
     ButtonModule,
+    InputTextModule,
+    InputTextareaModule
   ],
   providers: [provideClientHydration(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
