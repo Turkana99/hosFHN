@@ -37,7 +37,7 @@
               routerLink="main"
               [routerLinkActiveOptions]="{ exact: true }"
               routerLinkActive="router-link-active"
-              >Ana Səhifə</a
+              >{{ Language.homePage }}</a
             >
           </li>
           <li class="nav-item">
@@ -46,7 +46,7 @@
               routerLink="about"
               [routerLinkActiveOptions]="{ exact: true }"
               routerLinkActive="router-link-active"
-              >Haqqımızda</a
+              >{{ Language.about }}</a
             >
           </li>
           <li class="nav-item">
@@ -55,7 +55,7 @@
               routerLink="sections"
               [routerLinkActiveOptions]="{ exact: true }"
               routerLinkActive="router-link-active"
-              >Şöbələr</a
+              >{{ Language.departments }}</a
             >
           </li>
           <li class="nav-item">
@@ -64,7 +64,7 @@
               routerLink="doctors"
               [routerLinkActiveOptions]="{ exact: true }"
               routerLinkActive="router-link-active"
-              >Həkimlər</a
+              >{{ Language.doctors }}</a
             >
           </li>
           <li class="nav-item dropdown">
@@ -76,7 +76,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Xəbərlər
+              {{ Language.news }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
@@ -85,12 +85,24 @@
                   routerLink="announcements"
                   [routerLinkActiveOptions]="{ exact: true }"
                   routerLinkActive="router-link-active"
-                  >Elanlar</a
+                  >{{ Language.advertisements }}</a
                 >
               </li>
-              <li><a class="dropdown-item" routerLink="successes">Uğurlarımız</a></li>
-              <li><a class="dropdown-item" routerLink="information">Maarifləndirmə</a></li>
-              <li><a class="dropdown-item" routerLink="news">Xəbər</a></li>
+              <li>
+                <a class="dropdown-item" routerLink="successes">{{
+                  Language.achievements
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="information">{{
+                  Language.acknowledgements
+                }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="news">{{
+                  Language.news
+                }}</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -101,7 +113,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Qalereya
+              {{ Language.gallery }}
             </a>
             <ul
               class="dropdown-menu"
@@ -114,15 +126,18 @@
                   routerLink="gallery"
                   [routerLinkActiveOptions]="{ exact: true }"
                   routerLinkActive="router-link-active"
-                  >Foto</a
+                  >{{ Language.photo }}</a
                 >
               </li>
-              <li><a class="dropdown-item"  routerLink="video">Video</a></li>
+              <li><a class="dropdown-item" routerLink="video">Video</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://epb.fhn.gov.az/" target="_blank"
-              >Onlayn Laboratoriya</a
+            <a
+              class="nav-link"
+              href="https://epb.fhn.gov.az/"
+              target="_blank"
+              >{{ Language.onlineLaboratory }}</a
             >
           </li>
           <li class="nav-item">
@@ -131,7 +146,7 @@
               routerLink="contact"
               [routerLinkActiveOptions]="{ exact: true }"
               routerLinkActive="router-link-active"
-              >Əlaqə</a
+              >{{ Language.contact }}</a
             >
           </li>
           <li class="nav-item search ps-3">
@@ -159,13 +174,18 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Az
+              {{ langService.getLanguage().toUpperCase() }}
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <li>
-                <a class="dropdown-item">En</a>
+                <a class="dropdown-item" (click)="changeLanguage('Az')">Az</a>
               </li>
-              <li><a class="dropdown-item" href="#">Ru</a></li>
+              <li>
+                <a class="dropdown-item" (click)="changeLanguage('En')">En</a>
+              </li>
+              <li>
+                <a class="dropdown-item" (click)="changeLanguage('Ru')">Ru</a>
+              </li>
             </ul>
           </li>
         </ul>

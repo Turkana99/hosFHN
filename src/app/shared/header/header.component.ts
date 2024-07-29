@@ -1,21 +1,36 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { LangService } from '../../core/services/lang.service';
+import { isNgTemplate } from '@angular/compiler';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   whiteLogo = false;
   searchVisible: boolean = false;
   searchQuery: string = '';
 
+  constructor(public langService: LangService) {}
+  ngOnInit(): void {}
   toggleSearch() {
     this.searchVisible = !this.searchVisible;
     if (!this.searchVisible) {
       this.searchQuery = ''; // Clear search query when hiding the input
     }
   }
+
+  changeLanguage(language: string): void {
+    this.langService.setLanguage(language);
+    this.langService.status.subscribe((status) => {
+      console.log('7', status);
+      if (status === 5) {
+        window.location.reload();
+      }
+    });
+  }
+
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const element = document.querySelector('.header') as HTMLElement;
@@ -28,5 +43,7 @@ export class HeaderComponent {
     }
   }
 
-  
+  get Language() {
+    return this.langService.getTranslate();
+  }
 }

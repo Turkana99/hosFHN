@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { LangService } from '../../../../core/services/lang.service';
+import { HomePagesService } from '../../../../core/services/homepages.service';
+import { AdvertisementsService } from '../../../../core/services/advertisements.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-announcement-carousel',
@@ -6,53 +10,42 @@ import { Component } from '@angular/core';
   styleUrl: './announcement-carousel.component.scss'
 })
 export class AnnouncementCarouselComponent {
-  announcements = [
-    {
-      id: '1',
-      title: 'FHN işə qəbulla əlaqədar növbəti müsabiqə elan edir',
-      description:
-        'FHN (Fövqəladə Hallar Nazirliyi), müsabiqə elan edir! Əgər siz də öz bacarıqlarınızı FHN-da göstərmək və fərqli növbələrdə işləmək istəyirsinizsə, müsabiqəyə qoşulun.',
-      image: '../../../assets/images/elan1.svg',
-    },
-    {
-      id: '2',
-      title: 'Məktəblərdə maarifləndirmə davam edir',
-      description:
-        'Məktəblərdə fövqalədə hallarla bağlı maarifləndirmə tədbirlərimiz davam edir. Tələbələrimizə və tədris heyətinə yönlənmiş tədbirlərimizlə təhlükəsizlik və məlumatlandırma sahəsində fəaliyyətimizi gücləndiririk.',
-      image: '../../../assets/images/elan2.svg',
-    },
-    {
-      id: '3',
-      title: 'Fövqəladə Hallar Nazirliyinin Dövlət Yanğın Nəzarəti Xidməti tərəfindən regional müşavirələr keçirilmişdir',
-      description:
-        'Dövlət Yanğın Nəzarəti Xidməti tərəfindən təşkil olunan regional müşavirələr, fövqəladə hallar ərazisində yanğın təhlükəsi ilə başa çıxmağa həsr olunmuşdur.',
-      image: '../../../assets/images/elan3.svg',
-    },
-    {
-      id: '4',
-      title: 'FHN işə qəbulla əlaqədar növbəti müsabiqə elan edir',
-      description:
-        'Məktəblərdə fövqalədə hallarla bağlı maarifləndirmə tədbirlərimiz davam edir. Tələbələrimizə və tədris heyətinə yönlənmiş tədbirlərimizlə təhlükəsizlik və məlumatlandırma sahəsində fəaliyyətimizi gücləndiririk.',
-      image: '../../../assets/images/elan1.svg',
-    },
-    {
-      id: '5',
-      title: 'Məktəblərdə maarifləndirmə davam edir',
-      description:
-        'Pasiyentlərin stasionarda rahatlığı və effektiv müalicəsi üçün komfortlu standart və VİP palatalar mövcuddur. Xəstələrin yaxınlarının qalması üçün tam şərait yaradılıb.',
-      image: '../../../assets/images/elan2.svg',
-    },
-    {
-      id: '6',
-      title: 'Fövqəladə Hallar Nazirliyinin Dövlət Yanğın Nəzarəti Xidməti tərəfindən regional müşavirələr keçirilmişdir',
-      description:
-        'Dövlət Yanğın Nəzarəti Xidməti tərəfindən təşkil olunan regional müşavirələr, fövqəladə hallar ərazisində yanğın təhlükəsi ilə başa çıxmağa həsr olunmuşdur.',
-      image: '../../../assets/images/elan3.svg',
-    },
-  ];
+  homePageInfos: any = [];
+  advertisements: any = [];
 
+  constructor(
+    private homepagesService: HomePagesService,
+    private langService: LangService,
+    private advService: AdvertisementsService
+  ) {}
 
-  constructor() {}
+  loadData() {
+    const endpoint = this.langService.getLanguage() || 'Az';
 
-  ngOnInit() {}
+    forkJoin({
+      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint),
+      advertisements: this.advService.getAdvertisementInfos(endpoint),
+    }).subscribe({
+      next: ({ homePageInfos, advertisements }) => {
+        this.homePageInfos = homePageInfos;
+        this.advertisements = advertisements.items;
+        console.log('HomePage Infos:', this.homePageInfos);
+        console.log('Doctors:', this.advertisements);
+        this.langService.status.next(5);
+      },
+      error: (err) => {
+        console.error('Error loading data:', err);
+        // Handle error accordingly
+      },
+    });
+  }
+
+  ngOnInit() {
+    this.langService.status.subscribe((status) => {
+      if (status === 4) {
+        console.log("5", status);
+        this.loadData();
+      }
+    });
+  }
 }

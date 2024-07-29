@@ -1,64 +1,35 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AnnouncementDialogComponent } from '../dialogs/announcement-dialog/announcement-dialog.component';
+import { HomePagesService } from '../../core/services/homepages.service';
+import { finalize, forkJoin } from 'rxjs';
+import { LangService } from '../../core/services/lang.service';
+import { NewsService } from '../../core/services/news.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent implements AfterViewInit {
-  news = [
-    {
-      id: 1,
-      img: '../../../assets/images/news1.svg',
-      date: '18.01.2024',
-      title: 'Prezident İlham Əliyev Şuşa rayonunda səfərdədir',
-      description:
-        'Prezident İlham Əliyev iyulun 21-də Şuşa rayonunun Daşaltı kəndinin yenidən qurulması ilə bağlı görüləcək işlərlə tanış olub.',
-    },
-    {
-      id: 2,
-      img: '../../../assets/images/news2.svg',
-      date: '18.01.2024',
-      title: 'Pfizer şirkətinin nümayəndə heyəti ilə görüş keçirilib',
-      description:
-        'Səhiyyə nazirliyində Pfizer şirkətinin Qafqaz, Mərkəzi Asiya və Monqolustan üzrə rəhbər heyəti ilə görüş keçirilib.',
-    },
-    {
-      id: 3,
-      img: '../../../assets/images/news3.svg',
-      date: '18.01.2024',
-      title: 'İyunun 17-si Tibb İşçilərinin Peşə Bayramı Günüdür',
-      description:
-        'Hər il iyunun 17-si ölkəmizdə Tibb İşçilərinin Peşə Bayramı Günü kimi qeyd olunur.',
-    },
-    {
-      id: 4,
-      img: '../../../assets/images/news1.svg',
-      date: '18.01.2024',
-      title: 'Prezident İlham Əliyev Şuşa rayonunda səfərdədir',
-      description:
-        'Prezident İlham Əliyev iyulun 21-də Şuşa rayonunun Daşaltı kəndinin yenidən qurulması ilə bağlı görüləcək işlərlə tanış olub.',
-    },
-    {
-      id: 5,
-      img: '../../../assets/images/news2.svg',
-      date: '18.01.2024',
-      title: 'Pfizer şirkətinin nümayəndə heyəti ilə görüş keçirilib',
-      description:
-        'Səhiyyə nazirliyində Pfizer şirkətinin Qafqaz, Mərkəzi Asiya və Monqolustan üzrə rəhbər heyəti ilə görüş keçirilib.',
-    },
-    {
-      id: 6,
-      img: '../../../assets/images/news3.svg',
-      date: '18.01.2024',
-      title: 'İyunun 17-si Tibb İşçilərinin Peşə Bayramı Günüdür',
-      description:
-        'Hər il iyunun 17-si ölkəmizdə Tibb İşçilərinin Peşə Bayramı Günü kimi qeyd olunur.',
-    },
-  ];
-  constructor(public dialog: MatDialog) {}
+export class MainComponent implements AfterViewInit, OnInit {
+  showSpinner = false;
+  homePageInfos: any = [];
+  news: any = [];
+  constructor(
+    public dialog: MatDialog,
+    private langService: LangService,
+    private newsService: NewsService,
+    private homepagesService: HomePagesService
+  ) {}
+
+  ngOnInit(): void {
+    this.langService.status.subscribe((status) => {
+      if (status === 0) {
+        console.log("1", status);
+        this.loadData();
+      }
+    });
+  }
 
   ngAfterViewInit() {
     const hasShownAnnouncement = sessionStorage.getItem('hasShownAnnouncement');
@@ -74,5 +45,22 @@ export class MainComponent implements AfterViewInit {
         sessionStorage.setItem('hasShownAnnouncement', 'true');
       }, 1000);
     }
+  }
+
+  loadData() {
+    const endpoint = this.langService.getLanguage() || 'Az';
+    forkJoin({
+      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint),
+      news: this.newsService.getNewsInfos(endpoint),
+    }).subscribe({
+      next: ({ homePageInfos, news }) => {
+        this.homePageInfos = homePageInfos;
+        this.news = news.items;
+      },
+      error: (err) => {
+        console.error('Error loading data:', err);
+      },
+    });
+    this.langService.status.next(3);
   }
 }

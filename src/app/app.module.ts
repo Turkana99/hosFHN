@@ -54,6 +54,14 @@ import { VideoDetailComponent } from './components/video-detail/video-detail.com
 import { GalleryDetailComponent } from './components/gallery-detail/gallery-detail.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { LangService } from './core/services/lang.service';
+import { HomePagesService } from './core/services/homepages.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DepartmentsService } from './core/services/departments.service';
+import { DoctorsService } from './core/services/doctors.service';
+import { NewsService } from './core/services/news.service';
+import { TestimonialsService } from './core/services/testimonials.service';
+import { AdvertisementsService } from './core/services/advertisements.service';
 
 @NgModule({
   declarations: [
@@ -94,7 +102,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     AnnouncementDetailCarouselComponent,
     VideoComponent,
     VideoDetailComponent,
-    GalleryDetailComponent
+    GalleryDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -111,9 +119,20 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     CardModule,
     ButtonModule,
     InputTextModule,
-    InputTextareaModule
+    InputTextareaModule,
+    HttpClientModule,
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [
+    provideClientHydration(),
+    provideAnimationsAsync(),
+    LangService,
+    HomePagesService,
+    DepartmentsService,
+    DoctorsService,
+    NewsService,
+    TestimonialsService,
+    AdvertisementsService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

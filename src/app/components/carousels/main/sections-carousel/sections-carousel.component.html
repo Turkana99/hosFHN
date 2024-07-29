@@ -2,29 +2,29 @@
 <div class="section-carousel py-3">
   <p-carousel
     class="px-5 custom-carousel"
-    [value]="sections"
+    [value]="departments"
     [autoplayInterval]="2000"
     [numVisible]="3"
     [numScroll]="1"
   >
     <ng-template pTemplate="header">
-      <p class="title py-2">Şöbələr</p>
+      <p class="title py-2">{{homePageInfos.departmentsPanelTitle}}</p>
     </ng-template>
-    <ng-template let-product pTemplate="item">
+    <ng-template let-department pTemplate="item">
       <div class="border-1 surface-border border-round my-2 py-5 px-2">
         <div class="mb-3">
           <div class="relative mx-auto">
             <img
-              src="{{ product.image }}"
-              [alt]="product.title"
+              src="{{ department.coverImageUrl}}"
+              alt="{{ department.name }}"
               class="w-full border-round"
             />
           </div>
         </div>
-        <div class="mb-3 font-medium carousel-title">{{ product.title }}</div>
+        <div class="mb-3 font-medium carousel-title">{{ department.name  }}</div>
         <div class="flex justify-content-between align-items-center desc">
           <div class="mt-0 font-semibold text-xl">
-            {{ product.description }}
+            {{ department.description }}
           </div>
         </div>
       </div>

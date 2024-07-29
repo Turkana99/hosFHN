@@ -2,29 +2,29 @@
 <div class="announcements-carousel pt-3">
     <p-carousel
       class="px-5 custom-carousel"
-      [value]="announcements"
+      [value]="advertisements"
       [autoplayInterval]="2000"
       [numVisible]="3"
       [numScroll]="1"
     >
       <ng-template pTemplate="header">
-        <p class="title py-2">Elanlar</p>
+        <p class="title py-2">{{homePageInfos.advertisementsPanelTitle}}</p>
       </ng-template>
-      <ng-template let-product pTemplate="item">
+      <ng-template let-adv pTemplate="item">
         <div class="border-1 surface-border border-round my-2 py-5 px-2">
           <div class="mb-3">
             <div class="relative mx-auto">
               <img
-                src="{{ product.image }}"
-                [alt]="product.title"
+                src="{{ adv.coverImg }}"
+                [alt]="adv.title"
                 class="w-full border-round"
               />
             </div>
           </div>
-          <div class="mb-3 font-medium carousel-title">{{ product.title }}</div>
+          <div class="mb-3 font-medium carousel-title">{{ adv.title }}</div>
           <div class="flex justify-content-between align-items-center desc">
             <div class="mt-0 font-semibold text-xl">
-              {{ product.description }}
+              {{ adv.content }}
             </div>
           </div>
         </div>

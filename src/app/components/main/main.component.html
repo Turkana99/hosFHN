@@ -1,12 +1,15 @@
 <!--Jumbotron-->
 <div
   class="jumbotron d-flex flex-column align-items-center justify-content-center"
+  [ngStyle]="{
+    'background-image': 'url(' + homePageInfos.mainBackgroundImageUrl + ')'
+  }"
 >
   <div class="overlay">
     <div class="w-100 content">
       <div class="jumb-text p-0 m-0">
-        <p>Sağlamlığınızın qayğısına birlikdə qalaq</p>
-        <h1>Sağlamlığınızın mərkəzi</h1>
+        <p>{{ homePageInfos.title }}</p>
+        <h1>{{ homePageInfos.subTitle }}</h1>
       </div>
       <div class="container-fluid info p-0">
         <div class="row info-box py-4 mx-0">
@@ -64,7 +67,7 @@
     <div class="quotes row py-3">
       <div class="HA col-lg-3 col-md-3 col-sm-12 d-flex justify-content-start">
         <div>
-          <img src="../../../assets/images/HA.svg" alt="" />
+          <img [src]="homePageInfos.quoteLeftImageUrl" alt="" />
         </div>
       </div>
       <div
@@ -75,18 +78,17 @@
         >
           <div class="quote-text py-3 px-0">
             <p>
-              Səhiyyə bizim üçün, hər bir cəmiyyət və dövlət üçün çox lazımlı
-              sahədir.
+              {{ homePageInfos.quote }}
             </p>
           </div>
           <div>
-            <img src="../../../assets/images/imza.svg" alt="" />
+            <img [src]="homePageInfos.signatureImageUrl" alt="" />
           </div>
         </div>
       </div>
       <div class="IA col-lg-3 col-md-3 col-sm-12 d-flex justify-content-end">
         <div>
-          <img src="../../../assets/images/IA.svg" alt="" />
+          <img [src]="homePageInfos.quoteRightImageUrl" alt="" />
         </div>
       </div>
     </div>
@@ -103,11 +105,10 @@
 <div class="content">
   <!--News-->
   <div class="news container-fluid p-0">
-    <h1 class="title pt-5">Xəbərlər</h1>
+    <h1 class="title pt-5">{{ homePageInfos.newsPanelTitle }}</h1>
     <div class="title-desc">
       <p class="text-center pb-4 px-5">
-        Ölkəmizdə və dünyada baş verən ən son tibb xəbərləri və FHN Hospitalında
-        baş verən hadisələri Xəbərlər bölməsindən oxuyub paylaşa bilərsiniz.
+        {{ homePageInfos.newsPanelDescription }}
       </p>
     </div>
     <div class="w-100 row d-flex justify-content-between p-0 m-0">
