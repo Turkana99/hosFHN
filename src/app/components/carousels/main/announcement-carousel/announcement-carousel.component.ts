@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { LangService } from '../../../../core/services/lang.service';
 import { HomePagesService } from '../../../../core/services/homepages.service';
 import { AdvertisementsService } from '../../../../core/services/advertisements.service';
-import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-announcement-carousel',
   templateUrl: './announcement-carousel.component.html',
-  styleUrl: './announcement-carousel.component.scss'
+  styleUrls: ['./announcement-carousel.component.scss'],
 })
-export class AnnouncementCarouselComponent {
+export class AnnouncementCarouselComponent implements OnInit {
   homePageInfos: any = [];
   advertisements: any = [];
 
@@ -19,33 +20,31 @@ export class AnnouncementCarouselComponent {
     private advService: AdvertisementsService
   ) {}
 
+  ngOnInit() {
+    this.loadData();
+  }
+
   loadData() {
     const endpoint = this.langService.getLanguage() || 'Az';
+    this.langService.incrementTotalRequests(2);
 
     forkJoin({
-      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint),
-      advertisements: this.advService.getAdvertisementInfos(endpoint),
+      homePageInfos: this.homepagesService
+        .getHomePagesInfo(endpoint)
+        .pipe(finalize(() => this.langService.notifyRequestCompleted())),
+      advertisements: this.advService
+        .getAdvertisementInfos(endpoint)
+        .pipe(finalize(() => this.langService.notifyRequestCompleted())),
     }).subscribe({
       next: ({ homePageInfos, advertisements }) => {
         this.homePageInfos = homePageInfos;
-        this.advertisements = advertisements.items;
+        this.advertisements = advertisements;
         console.log('HomePage Infos:', this.homePageInfos);
-        console.log('Doctors:', this.advertisements);
-        this.langService.status.next(5);
+        console.log('Advertisements:', this.advertisements);
       },
       error: (err) => {
         console.error('Error loading data:', err);
-        // Handle error accordingly
       },
-    });
-  }
-
-  ngOnInit() {
-    this.langService.status.subscribe((status) => {
-      if (status === 4) {
-        console.log("5", status);
-        this.loadData();
-      }
     });
   }
 }

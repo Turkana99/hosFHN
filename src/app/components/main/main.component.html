@@ -2,14 +2,14 @@
 <div
   class="jumbotron d-flex flex-column align-items-center justify-content-center"
   [ngStyle]="{
-    'background-image': 'url(' + homePageInfos.mainBackgroundImageUrl + ')'
+    'background-image': 'url(' + homePageInfos?.mainBackgroundImageUrl + ')'
   }"
 >
   <div class="overlay">
     <div class="w-100 content">
       <div class="jumb-text p-0 m-0">
-        <p>{{ homePageInfos.title }}</p>
-        <h1>{{ homePageInfos.subTitle }}</h1>
+        <p>{{ homePageInfos?.title }}</p>
+        <h1>{{ homePageInfos?.subTitle }}</h1>
       </div>
       <div class="container-fluid info p-0">
         <div class="row info-box py-4 mx-0">
@@ -20,7 +20,7 @@
               </div>
               <div class="d-flex align-items-center px-1 m-0">
                 <p class="m-0">
-                  AZ1073, Bakı şəhəri, M.Müşfiq küçəsi, 501-ci məhəllə
+                  {{ contact.address }}
                 </p>
               </div>
             </div>
@@ -31,8 +31,8 @@
                 <i class="fa-solid fa-phone"></i>
               </div>
               <div class="d-flex flex-column justify-content-center px-1 m-0">
-                <p class="m-0">+994 12 512 00 61</p>
-                <a href="mailto:info@fhn.gov.az">info&#64;fhn.gov.az</a>
+                <p class="m-0">{{ contact.phoneNumber }}</p>
+                <a href="mailto:info@fhn.gov.az">{{ contact.emailAddress }}</a>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
                 <i class="fa-solid fa-flask"></i>
               </div>
               <div class="d-flex align-items-center px-1 m-0">
-                <p class="m-0">Onlayn Laboratoriya</p>
+                <p class="m-0">{{ contact.onlineLaboratoryTitle }}</p>
               </div>
             </div>
           </div>
@@ -52,7 +52,7 @@
                 <i class="fa-solid fa-clock"></i>
               </div>
               <div class="d-flex align-items-center px-1 m-0">
-                <p class="m-0">24/7 Xidmət</p>
+                <p class="m-0">{{ contact.serviceTitle }}</p>
               </div>
             </div>
           </div>
@@ -67,7 +67,7 @@
     <div class="quotes row py-3">
       <div class="HA col-lg-3 col-md-3 col-sm-12 d-flex justify-content-start">
         <div>
-          <img [src]="homePageInfos.quoteLeftImageUrl" alt="" />
+          <img [src]="homePageInfos?.quoteLeftImageUrl" alt="" />
         </div>
       </div>
       <div
@@ -78,17 +78,17 @@
         >
           <div class="quote-text py-3 px-0">
             <p>
-              {{ homePageInfos.quote }}
+              {{ homePageInfos?.quote }}
             </p>
           </div>
           <div>
-            <img [src]="homePageInfos.signatureImageUrl" alt="" />
+            <img [src]="homePageInfos?.signatureImageUrl" alt="" />
           </div>
         </div>
       </div>
       <div class="IA col-lg-3 col-md-3 col-sm-12 d-flex justify-content-end">
         <div>
-          <img [src]="homePageInfos.quoteRightImageUrl" alt="" />
+          <img [src]="homePageInfos?.quoteRightImageUrl" alt="" />
         </div>
       </div>
     </div>
@@ -103,27 +103,31 @@
 <app-doctors-carousel></app-doctors-carousel>
 
 <div class="content">
-  <!--News-->
+  <!-- News -->
   <div class="news container-fluid p-0">
-    <h1 class="title pt-5">{{ homePageInfos.newsPanelTitle }}</h1>
+    <h1 class="title pt-5">{{ homePageInfos?.newsPanelTitle }}</h1>
     <div class="title-desc">
       <p class="text-center pb-4 px-5">
-        {{ homePageInfos.newsPanelDescription }}
+        {{ homePageInfos?.newsPanelDescription }}
       </p>
     </div>
     <div class="w-100 row d-flex justify-content-between p-0 m-0">
       <div
         class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
-        *ngFor="let news of news"
+        *ngFor="let newsItem of news"
       >
         <div class="w-100">
           <mat-card class="example-card">
-            <img mat-card-image [src]="news.img" [alt]="news.img" />
+            <img
+              mat-card-image
+              [src]="newsItem.coverImageUrl"
+              [alt]="newsItem.title"
+            />
             <mat-card-content class="pt-3 px-0">
-              <span>{{ news.date }}</span>
-              <h3 class="m-0">{{ news.title }}</h3>
+              <span>{{ newsItem.createdDateFormatted }}</span>
+              <h3 class="m-0">{{ newsItem.title }}</h3>
               <p>
-                {{ news.description }}
+                {{ newsItem.content }}
               </p>
             </mat-card-content>
           </mat-card>
@@ -131,50 +135,20 @@
       </div>
     </div>
     <div class="d-flex justify-content-center py-3">
-      <p-button label="Bütün xəbərlər" />
+      <p-button [label]="homePageInfos?.newsPanelBtnText" />
     </div>
   </div>
 
   <!--Banners-->
   <div class="container-fluid banners py-5">
     <div class="row">
-      <div class="col-lg-3 mb-2">
+      <div class="col-lg-3 mb-2" *ngFor="let banner of usefulLinks">
         <div
           class="banner-box d-flex justify-content-between align-items-center"
         >
-          <p class="p-0 m-0">Heydər Əliyev Fondu</p>
+          <p class="p-0 m-0">{{ banner.title }}</p>
           <div class="banner-img">
-            <img src="../../../assets/images/HAFund.svg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 mb-2">
-        <div
-          class="banner-box d-flex justify-content-between align-items-center"
-        >
-          <p class="p-0 m-0">Mehriban Əliyeva</p>
-          <div class="banner-img">
-            <img src="../../../assets/images/MehribanAliyeva.svg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 mb-2">
-        <div
-          class="banner-box d-flex justify-content-between align-items-center"
-        >
-          <p class="p-0 m-0">İlham Əliyev</p>
-          <div class="banner-img">
-            <img src="../../../assets/images/IA.svg" alt="" />
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 mb-2">
-        <div
-          class="banner-box d-flex justify-content-between align-items-center"
-        >
-          <p class="p-0 m-0">Heydər Əliyev</p>
-          <div class="banner-img">
-            <img src="../../../assets/images/HA.svg" alt="" />
+            <img [src]="banner.coverImageUrl" alt="" />
           </div>
         </div>
       </div>
@@ -189,6 +163,6 @@
   <!--Announcement-->
   <app-announcement-carousel></app-announcement-carousel>
   <div class="d-flex justify-content-center pb-5 mb-3">
-    <p-button label="Bütün elanlar" />
+    <p-button [label]="homePageInfos.advertisementsPanelBtnText" />
   </div>
 </div>

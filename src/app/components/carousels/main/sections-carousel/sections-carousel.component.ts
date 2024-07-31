@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { finalize, forkJoin } from 'rxjs';
 import { HomePagesService } from '../../../../core/services/homepages.service';
-import { forkJoin } from 'rxjs';
 import { DepartmentsService } from '../../../../core/services/departments.service';
 import { LangService } from '../../../../core/services/lang.service';
 
 @Component({
   selector: 'app-sections-carousel',
   templateUrl: './sections-carousel.component.html',
-  styleUrl: './sections-carousel.component.scss',
+  styleUrls: ['./sections-carousel.component.scss'],
 })
-export class SectionsCarouselComponent {
+export class SectionsCarouselComponent implements OnInit {
   homePageInfos: any = [];
   departments: any = [];
 
@@ -19,33 +19,34 @@ export class SectionsCarouselComponent {
     private departmentsService: DepartmentsService
   ) {}
 
+  ngOnInit() {
+    this.loadData();
+  }
+
   loadData() {
     const endpoint = this.langService.getLanguage() || 'Az';
 
+    // Increment total requests count for each API call
+    this.langService.incrementTotalRequests(2); 
+
     forkJoin({
-      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint),
-      departments: this.departmentsService.getDepartmentInfos(endpoint),
+      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint).pipe(
+        finalize(() => this.langService.notifyRequestCompleted())
+      ),
+      departments: this.departmentsService.getDepartmentInfos(endpoint).pipe(
+        finalize(() => this.langService.notifyRequestCompleted())
+      ),
     }).subscribe({
       next: ({ homePageInfos, departments }) => {
         this.homePageInfos = homePageInfos;
         this.departments = departments.items;
         console.log('HomePage Infos:', this.homePageInfos);
         console.log('Departments:', this.departments);
-        this.langService.status.next(2);
       },
       error: (err) => {
         console.error('Error loading data:', err);
         // Handle error accordingly
       },
-    });
-  }
-
-  ngOnInit() {
-    this.langService.status.subscribe((status) => {
-      if (status === 1) {
-        console.log("2", status);
-        this.loadData();
-      }
     });
   }
 }

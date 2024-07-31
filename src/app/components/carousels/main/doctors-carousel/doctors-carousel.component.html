@@ -1,23 +1,22 @@
-<!--Sobeler carousel-->
 <div class="doctor-carousel content py-3">
   <p-carousel
-    class="px-5 custom-carousel"
-    [value]="doctors"
+    class="custom-carousel"
+    [value]="doctors" 
     [autoplayInterval]="2000"
     [numVisible]="3"
     [numScroll]="1"
   >
     <ng-template pTemplate="header">
-      <p class="title py-2">{{homePageInfos.doctorsPanelTitle}}</p>
+      <p class="title pt-5">{{ homePageInfos?.doctorsPanelTitle }}</p>
     </ng-template>
     <ng-template let-doc pTemplate="item">
       <div
         class="border-1 surface-border border-round d-flex flex-column align-items-center my-2 py-5"
       >
         <div class="mb-3">
-          <div class="relative mx-auto">
+          <div class="relative doc_image">
             <img
-              src="{{ doc.coverImage }}"
+              src="{{ doc.coverImageUrl }}"
               [alt]="doc.fullName"
               class="w-full border-round"
             />

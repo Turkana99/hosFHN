@@ -20,12 +20,7 @@ export class WhHeaderComponent {
   constructor(public langService: LangService) {}
   changeLanguage(language: string): void {
     this.langService.setLanguage(language);
-    this.langService.status.subscribe((status) => {
-      console.log("7", status);
-      if (status === 5) {
-        window.location.reload();
-      }
-    });
+    window.location.reload();
   }
 
   @HostListener('window:scroll', [])

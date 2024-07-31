@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
-import { TestimonialsService } from '../../../../core/services/testimonials.service';
+import { Component, OnInit } from '@angular/core';
+import { forkJoin } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { LangService } from '../../../../core/services/lang.service';
 import { HomePagesService } from '../../../../core/services/homepages.service';
-import { forkJoin } from 'rxjs';
+import { TestimonialsService } from '../../../../core/services/testimonials.service';
 
 @Component({
   selector: 'app-testimonials-carousel',
   templateUrl: './testimonials-carousel.component.html',
-  styleUrl: './testimonials-carousel.component.scss',
+  styleUrls: ['./testimonials-carousel.component.scss'],
 })
-export class TestimonialsCarouselComponent {
+export class TestimonialsCarouselComponent implements OnInit {
   homePageInfos: any = [];
   testimonials: any = [];
 
@@ -19,31 +20,33 @@ export class TestimonialsCarouselComponent {
     private testiService: TestimonialsService
   ) {}
 
+  ngOnInit() {
+    this.loadData();
+  }
+
   loadData() {
     const endpoint = this.langService.getLanguage() || 'Az';
 
+    // Increment total requests count for each API call
+    this.langService.incrementTotalRequests(2); 
+
     forkJoin({
-      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint),
-      testimonials: this.testiService.getTestimonialInfos(),
+      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint).pipe(
+        finalize(() => this.langService.notifyRequestCompleted())
+      ),
+      testimonials: this.testiService.getTestimonialInfos().pipe(
+        finalize(() => this.langService.notifyRequestCompleted())
+      ),
     }).subscribe({
       next: ({ homePageInfos, testimonials }) => {
         this.homePageInfos = homePageInfos;
         this.testimonials = testimonials.items;
-        console.log("testimonials",this.testimonials);
-        this.langService.status.next(4);
+        console.log('Testimonials:', this.testimonials);
       },
       error: (err) => {
         console.error('Error loading data:', err);
+        // Handle error accordingly
       },
-    });
-  }
-
-  ngOnInit() {
-    this.langService.status.subscribe((status) => {
-      if (status === 3) {
-        console.log("4", status);
-        this.loadData();
-      }
     });
   }
 }

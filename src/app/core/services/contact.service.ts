@@ -7,12 +7,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class NewsService {
+export class ContactService {
   constructor(private http: HttpClient, private langService: LangService) {}
-  getNewsInfos(endpoint: string): Observable<any> {
+  getContactInfos(endpoint: string): Observable<any> {
     const headers = new HttpHeaders({
       'Accept-Language': this.langService.getLanguage(),
     });
-    return this.http.get(`${environment.getNewsUrl}/${endpoint}`, { headers });
+    return this.http.get(`${environment.getContactsUrl}/${endpoint}`, { headers });
   }
 }

@@ -1,13 +1,13 @@
 @import "../../../../../styles/variables.scss";
 
-.content{
-    padding: 0px 12vw;
+.content {
+  padding: 0px 12vw;
 }
 .doctor-carousel {
-    width: 100%;
-    background-image: url(../../../../../assets/images/DoctorBg.svg);
-    background-size:cover;
-    background-repeat: no-repeat;
+  width: 100%;
+  background-image: url(../../../../../assets/images/DoctorBg.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
   .title {
     text-align: center;
     font-size: 48px;
@@ -19,11 +19,11 @@
   ::ng-deep .p-carousel-indicators {
     display: none;
   }
-  ::ng-deep .p-carousel-items-content{
+  ::ng-deep .p-carousel-items-content {
     display: flex;
     justify-content: center;
     padding: 0px 10px;
-    margin: 0px 10vw;
+    width: 100%;
   }
 
   ::ng-deep .p-carousel {
@@ -38,23 +38,29 @@
       font-family: "Inter", sans-serif;
     }
   }
-  ::ng-deep  .p-carousel .p-carousel-content{
+  ::ng-deep .p-carousel .p-carousel-content {
     color: white;
     display: flex;
     justify-content: center;
-    img{
-      border-radius: 20px;
+    width: 100%;
+    .p-carousel-items-container {
+      width: 100%;
+        img {
+          border-radius: 20px;
+          width: 100%;
+          height: 100%;
+      }
     }
   }
   ::ng-deep .p-carousel .p-carousel-content .p-carousel-prev {
-    color: white!important;
+    color: white !important;
     border: 1px solid white;
     border-radius: 50%;
     padding: 25px;
     margin-left: 10px;
   }
   ::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
-    color: white!important;
+    color: white !important;
     border: 1px solid white;
     border-radius: 50%;
     padding: 25px;

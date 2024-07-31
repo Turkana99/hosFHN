@@ -1,59 +1,57 @@
 <div class="w-100 container-fluid footer content">
   <div class="w-100 row m-0">
     <div class="col-lg-1 d-flex align-items-start px-0">
-      <img src="../../../assets/images/FHNLogoWhite.svg" alt="" />
+      <img [src]="footerInfo.logoUrl" alt="" />
     </div>
     <div class="col-lg-2 p-0">
       <ul class="first">
-        <li>Haqqımızda</li>
-        <li>Şöbələr</li>
-        <li>Həkimlər</li>
+        <li routerLink="about">{{Language.about}}</li>
+        <li routerLink="sections">{{Language.departments}}</li>
+        <li routerLink="doctors" >{{Language.doctors}}</li>
       </ul>
     </div>
     <div class="col-lg-2 p-0">
       <ul>
-        <li>Xəbərlər</li>
-        <li>Uğurlarımız</li>
-        <li>Maarifləndirmə</li>
-        <li>Xəbər</li>
-        <li>Elanlar</li>
+        <li>{{Language.news}}</li>
+        <li routerLink="successes">{{Language.achievements}}</li>
+        <li routerLink="information">{{Language.acknowledgements}}</li>
+        <li routerLink="news">{{Language.newsDrop}}</li>
+        <li routerLink="announcements">{{Language.advertisements}}</li>
       </ul>
     </div>
     <div class="col-lg-2 p-0">
       <ul>
-        <li>Qalereya</li>
-        <li>Foto</li>
-        <li>Video</li>
+        <li>{{Language.gallery}}</li>
+        <li routerLink="gellery">{{Language.photo}}</li>
+        <li routerLink="video">{{Language.video}}</li>
       </ul>
     </div>
     <div class="col-lg-2 p-0">
       <ul>
-        <li>Onlayn laboratoriya</li>
-        <li>Əlaqə</li>
+        <li>{{Language.onlineLaboratory}}</li>
+        <li routerLink="contact">{{Language.contact}}</li>
       </ul>
     </div>
     <div class="col-lg-3 p-0">
       <ul class="address">
-        <li>Əlaqə</li>
+        <li>{{Language.contact}}</li>
         <li>
-          <i class="fa-solid fa-location-dot"></i> AZ1073, Bakı şəhəri, M.Müşfiq
-          küçəsi, 501-ci məhəllə
+          <i class="fa-solid fa-location-dot"></i> {{contactInfo.address}}
         </li>
-        <li><i class="fa-solid fa-phone"></i> +994 12 512 00 61</li>
-        <li><i class="fa-solid fa-envelope"></i> info&#64;fhn.gov.az</li>
+        <li><i class="fa-solid fa-phone"></i> {{contactInfo.phoneNumber}}</li>
+        <li><i class="fa-solid fa-envelope"></i> {{contactInfo.emailAddress}}</li>
       </ul>
     </div>
   </div>
   <div class="w-100 row m-0 d-flex justify-content-between align-items-center">
     <div class="col-lg-7 copyright py-0">
-      © {{ currentYear }} Azərbaycan Respublikası Fövqəladə Hallar Nazirliyi. Bütün hüquqlar
-      qorunur.
+      © {{ currentYear }} {{footerInfo.text}}
     </div>
     <div class="col-lg-5 p-0">
       <ul class="d-flex justify-content-end nav-item">
         <li>
           <a
-            href="#"
+            [href]="contactInfo.facebookUrl"
             class="nav-link py-3"
             aria-current="page"
             title=""
@@ -68,7 +66,7 @@
         </li>
         <li>
           <a
-            href="#"
+          [href]="contactInfo.twitterUrl"
             class="nav-link py-3"
             title=""
             data-bs-toggle="tooltip"
@@ -82,7 +80,7 @@
         </li>
         <li>
           <a
-            href="#"
+          [href]="contactInfo.linkendUrl"
             class="nav-link py-3"
             title=""
             data-bs-toggle="tooltip"
@@ -96,7 +94,7 @@
         </li>
         <li>
           <a
-            href="#"
+          [href]="contactInfo.instagramUrl"
             class="nav-link py-3"
             title=""
             data-bs-toggle="tooltip"

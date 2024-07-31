@@ -8,13 +8,13 @@
     [numScroll]="1"
   >
     <ng-template let-testimonials pTemplate="item">
-      <div class="border-1 surface-border border-round my-2 py-5 px-2">
+      <div class="d-flex flex-column justify-content-between surface-border border-round my-2 py-5 px-2">
         <div class="mb-3 font-medium carousel-title">
-          {{ testimonials.description }}
+          {{ testimonials.content }}
         </div>
         <div class="flex justify-content-between align-items-center desc">
           <div class="mt-0 font-semibold text-xl">
-            {{ testimonials.author }}
+            {{ testimonials.fullName }}
           </div>
         </div>
       </div>

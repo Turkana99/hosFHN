@@ -62,6 +62,10 @@ import { DoctorsService } from './core/services/doctors.service';
 import { NewsService } from './core/services/news.service';
 import { TestimonialsService } from './core/services/testimonials.service';
 import { AdvertisementsService } from './core/services/advertisements.service';
+import { UsefulLinkService } from './core/services/usefulLinks.service';
+import { FooterService } from './core/services/footer.service';
+import { FeedbackAndSuggestionsPagesService } from './core/services/feedbackAndSuggestionsPages.service';
+import { ContactService } from './core/services/contact.service';
 
 @NgModule({
   declarations: [
@@ -132,6 +136,10 @@ import { AdvertisementsService } from './core/services/advertisements.service';
     NewsService,
     TestimonialsService,
     AdvertisementsService,
+    UsefulLinkService,
+    FooterService,
+    FeedbackAndSuggestionsPagesService,
+    ContactService
   ],
   bootstrap: [AppComponent],
 })

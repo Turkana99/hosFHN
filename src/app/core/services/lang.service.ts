@@ -1,12 +1,14 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LangService implements OnInit {
-  public status = new BehaviorSubject<number>(0); // Use number instead of Number
   private currentLanguage: string;
+  private requestsCompleted = new BehaviorSubject<number>(0);
+  private totalRequests = new BehaviorSubject<number>(0);
   constantNavItem: any = {
     Az: {
       homePage: 'Ana Səhifə',
@@ -61,8 +63,9 @@ export class LangService implements OnInit {
   constructor() {
     this.currentLanguage = localStorage.getItem('language') || 'Az';
   }
+
   ngOnInit(): void {
-      this.getTranslate();
+    this.getTranslate();
   }
 
   getLanguage(): any {
@@ -72,9 +75,38 @@ export class LangService implements OnInit {
   setLanguage(language: string): void {
     this.currentLanguage = language;
     localStorage.setItem('language', language);
+    this.resetRequestTracking();
   }
 
   getTranslate() {
     return this.constantNavItem[this.currentLanguage];
+  }
+
+  notifyRequestCompleted() {
+    this.requestsCompleted.next(this.requestsCompleted.value + 1);
+  }
+
+  incrementTotalRequests(count: number) {
+    this.totalRequests.next(this.totalRequests.value + count);
+  }
+
+  allRequestsCompleted(): Observable<boolean> {
+    return this.requestsCompleted.pipe(
+      map((completed) => completed >= this.totalRequests.value),
+      tap((allCompleted) => {
+        if (allCompleted) {
+          this.reloadPage();
+        }
+      })
+    );
+  }
+
+  private resetRequestTracking() {
+    this.requestsCompleted.next(0);
+    this.totalRequests.next(0);
+  }
+
+  private reloadPage() {
+    window.location.reload();
   }
 }

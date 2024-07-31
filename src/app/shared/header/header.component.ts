@@ -23,12 +23,7 @@ export class HeaderComponent implements OnInit {
 
   changeLanguage(language: string): void {
     this.langService.setLanguage(language);
-    this.langService.status.subscribe((status) => {
-      console.log('7', status);
-      if (status === 5) {
-        window.location.reload();
-      }
-    });
+    window.location.reload();
   }
 
   @HostListener('window:scroll', [])
