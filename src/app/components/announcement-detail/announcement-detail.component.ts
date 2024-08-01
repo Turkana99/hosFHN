@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-announcement-detail',
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AnnouncementDetailComponent {
   title: string = '';
+  fromPage:string="";
   announcements = [
     {
       id: 1,
@@ -58,11 +59,21 @@ export class AnnouncementDetailComponent {
         'Hər il iyunun 17-si ölkəmizdə Tibb İşçilərinin Peşə Bayramı Günü kimi qeyd olunur.',
     },
   ];
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.title = params['title'];
     });
+    this.route.queryParams.subscribe((params) => {
+      this.fromPage = params['from'] || 'announcements';
+    });
+  }
+  navigateBack(): void {
+    if (this.fromPage === 'main') {
+      this.router.navigate(['/main']);
+    } else {
+      this.router.navigate(['/announcements']);
+    }
   }
 }

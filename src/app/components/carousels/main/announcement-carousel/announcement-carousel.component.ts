@@ -23,6 +23,23 @@ export class AnnouncementCarouselComponent implements OnInit {
   ngOnInit() {
     this.loadData();
   }
+  responsiveOptions: any[] = [
+    {
+      breakpoint: '1400px',
+      numVisible: 3,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '1350px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '900px',
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
 
   loadData() {
     const endpoint = this.langService.getLanguage() || 'Az';

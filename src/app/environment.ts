@@ -12,7 +12,7 @@ export const environment = {
   getAcknowledgementsUrl:`${apiUrl}/Acknowledgements/GetListWithLang`,
   getAboutsUrl:`${apiUrl}/Abouts/GetListWithLang`,
   getContactsUrl:`${apiUrl}/Contacts/GetWithLang`,
-  getFeedbackAndSuggestionsUrl:`${apiUrl}/FeedbackAndSuggestions`,
+  getFeedbackAndSuggestionsUrl:`${apiUrl}/FeedbackAndSuggestions/GetApprovedList`,
   getFeedbackAndSuggestionsPagesUrl:`${apiUrl}/FeedbackAndSuggestionsPages/GetWithLang`,
   getGalleryCategoriesUrl:`${apiUrl}/GalleryCategories`,
   getGalleryTypesUrl:`${apiUrl}/GalleryTypes/GetListWithLang`,

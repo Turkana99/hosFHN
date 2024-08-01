@@ -1,0 +1,22 @@
+@import "../../../styles/variables.scss";
+
+.call {
+  z-index: 100;
+  background-color: red;
+  opacity: 0.8;
+  position: fixed;
+  top: 30%;
+  right: 0px;
+  .nav-link {
+    border: none;
+    .sosial-icon {
+      width: 45px;
+      height: 35px;
+      b,
+      i {
+        color: white;
+        font-size: 18px;
+      }
+    }
+  }
+}

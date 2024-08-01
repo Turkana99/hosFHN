@@ -1,4 +1,4 @@
-<!--Sobeler carousel-->
+<!-- Testimonials carousel -->
 <div class="testimonials-carousel content py-5">
   <p-carousel
     class="px-5 custom-carousel"
@@ -6,10 +6,11 @@
     [autoplayInterval]="2000"
     [numVisible]="3"
     [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
   >
     <ng-template let-testimonials pTemplate="item">
-      <div class="d-flex flex-column justify-content-between surface-border border-round my-2 py-5 px-2">
-        <div class="mb-3 font-medium carousel-title">
+      <div class="testimonial-item d-flex flex-column justify-content-between surface-border border-round my-2 py-5 px-2">
+        <div class="mb-3 font-medium carousel-title test_content">
           {{ testimonials.content }}
         </div>
         <div class="flex justify-content-between align-items-center desc">

@@ -14,7 +14,10 @@
             <p>
               {{ news.description }}
             </p>
-            <a [routerLink]="['/news-detail', news.title]">
+            <a
+              [routerLink]="['/news-detail', news.id]"
+              [queryParams]="{ from: 'news' }"
+            >
               <div class="py-3">
                 <p-button label="Daha ətraflı" /></div
             ></a>

@@ -1,4 +1,3 @@
-<!--Sobeler carousel-->
 <div class="section-carousel py-3">
   <p-carousel
     class="px-5 custom-carousel"
@@ -6,28 +5,32 @@
     [autoplayInterval]="2000"
     [numVisible]="3"
     [numScroll]="1"
+    [responsiveOptions]="responsiveOptions"
   >
     <ng-template pTemplate="header">
-      <p class="title py-2">{{homePageInfos.departmentsPanelTitle}}</p>
+      <p class="title py-2">{{ homePageInfos.departmentsPanelTitle }}</p>
     </ng-template>
     <ng-template let-department pTemplate="item">
-      <div class="border-1 surface-border border-round my-2 py-5 px-2">
-        <div class="mb-3">
-          <div class="relative mx-auto">
-            <img
-              src="{{ department.coverImageUrl}}"
-              alt="{{ department.name }}"
-              class="w-full border-round"
-            />
+      <a [routerLink]="['/section-detail', department.id]" [queryParams]="{ from: 'main' }">
+        <div class="border-1 surface-border border-round my-2 py-5 px-2">
+          <div class="mb-3">
+            <div class="relative mx-auto">
+              <img
+                src="{{ department.coverImageUrl }}"
+                alt="{{ department.name }}"
+                class="w-full border-round"
+              />
+            </div>
+          </div>
+          <div class="mb-3 font-medium carousel-title">
+            {{ department.name }}
+          </div>
+          <div class="flex justify-content-between align-items-center desc">
+            <div class="mt-0 font-semibold text-xl" [innerHTML]="department.description">
+            </div>
           </div>
         </div>
-        <div class="mb-3 font-medium carousel-title">{{ department.name  }}</div>
-        <div class="flex justify-content-between align-items-center desc">
-          <div class="mt-0 font-semibold text-xl">
-            {{ department.description }}
-          </div>
-        </div>
-      </div>
+      </a>
     </ng-template>
   </p-carousel>
 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-details',
@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DoctorDetailsComponent {
   name: string = '';
+  fromPage:string="";
   doctors = [
     {
       id: 1,
@@ -46,11 +47,21 @@ export class DoctorDetailsComponent {
       position: 'Azər Kərimov',
     },
   ];
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.name = params['name'];
     });
+    this.route.queryParams.subscribe((params) => {
+      this.fromPage = params['from'] || 'doctors'; 
+    });
+  }
+  navigateBack(): void {
+    if (this.fromPage === 'main') {
+      this.router.navigate(['/main']);
+    } else {
+      this.router.navigate(['/doctors']);
+    }
   }
 }

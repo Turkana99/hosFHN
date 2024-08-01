@@ -116,26 +116,31 @@
         class="my-card col-lg-4 col-md-6 col-sm-12 col-12 py-2 d-flex justify-content-between"
         *ngFor="let newsItem of news"
       >
-        <div class="w-100">
-          <mat-card class="example-card">
-            <img
-              mat-card-image
-              [src]="newsItem.coverImageUrl"
-              [alt]="newsItem.title"
-            />
-            <mat-card-content class="pt-3 px-0">
-              <span>{{ newsItem.createdDateFormatted }}</span>
-              <h3 class="m-0">{{ newsItem.title }}</h3>
-              <p>
-                {{ newsItem.content }}
-              </p>
-            </mat-card-content>
-          </mat-card>
-        </div>
+        <a
+          [routerLink]="['/news-detail', newsItem.id]"
+          [queryParams]="{ from: 'main' }"
+        >
+          <div class="w-100">
+            <mat-card class="example-card">
+              <img
+                mat-card-image
+                [src]="newsItem.coverImageUrl"
+                [alt]="newsItem.title"
+              />
+              <mat-card-content class="pt-3 px-0">
+                <span>{{ newsItem.createdDateFormatted }}</span>
+                <h3 class="m-0">{{ newsItem.title }}</h3>
+                <p class="news_content">
+                  {{ newsItem.content }}
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </a>
       </div>
     </div>
     <div class="d-flex justify-content-center py-3">
-      <p-button [label]="homePageInfos?.newsPanelBtnText" />
+      <p-button [label]="homePageInfos?.newsPanelBtnText" routerLink="/news" />
     </div>
   </div>
 
@@ -143,14 +148,16 @@
   <div class="container-fluid banners py-5">
     <div class="row">
       <div class="col-lg-3 mb-2" *ngFor="let banner of usefulLinks">
-        <div
-          class="banner-box d-flex justify-content-between align-items-center"
-        >
-          <p class="p-0 m-0">{{ banner.title }}</p>
-          <div class="banner-img">
-            <img [src]="banner.coverImageUrl" alt="" />
+        <a [href]="banner.link" target="_blank">
+          <div
+            class="banner-box d-flex justify-content-between align-items-center"
+          >
+            <p class="p-0 m-0">{{ banner.title }}</p>
+            <div class="banner-img">
+              <img [src]="banner.coverImageUrl" alt="" />
+            </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -163,6 +170,9 @@
   <!--Announcement-->
   <app-announcement-carousel></app-announcement-carousel>
   <div class="d-flex justify-content-center pb-5 mb-3">
-    <p-button [label]="homePageInfos.advertisementsPanelBtnText" />
+    <p-button
+      [label]="homePageInfos.advertisementsPanelBtnText"
+      routerLink="/announcements"
+    />
   </div>
 </div>

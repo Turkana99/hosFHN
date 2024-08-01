@@ -71,6 +71,23 @@
 }
 
 .news {
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  .news_content {
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    min-height: 80px;
+    /* Standard CSS properties */
+    display: box;
+    box-orient: vertical;
+    line-clamp: 4;
+  }
   ::ng-deep .mat-mdc-card {
     min-height: 480px;
     border: none;
@@ -117,6 +134,10 @@
 }
 
 .banners {
+  a{
+    text-decoration: none;
+    color: white;
+  }
   .banner-box {
     width: 100%;
     font-family: "Inter", sans-serif;

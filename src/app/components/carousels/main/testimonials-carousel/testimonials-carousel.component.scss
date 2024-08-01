@@ -3,35 +3,64 @@
 .content {
   padding: 0px 12vw;
 }
+
 .testimonials-carousel {
   background-image: url(../../../../../assets/images/Testimonials.svg);
   background-size: cover;
   background-repeat: no-repeat;
+
   ::ng-deep .p-carousel-indicators {
     display: none;
   }
+
   ::ng-deep .p-carousel {
     color: white;
+
     ::ng-deep .p-carousel-item {
       margin: 10px;
       padding: 0px 20px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       border: 1px solid #387ba9;
       border-radius: 54px;
     }
+
+    .test_content {
+      font-size: 14px;
+      font-family: "Inter", sans-serif;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      overflow: hidden;
+      min-height: 100px;
+      /* Standard CSS properties */
+      display: box;
+      box-orient: vertical;
+      line-clamp: 5;
+    }
+
+    .testimonial-item {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .carousel-title {
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      flex-grow: 1;
+    }
+
     .desc {
       font-size: 14px;
       font-family: "Inter", sans-serif;
       letter-spacing: 5px;
       text-transform: uppercase;
       opacity: 0.7;
+      align-self: flex-start;
     }
-    .carousel-title {
-      font-family: "Inter", sans-serif;
-      font-size: 14px;
-    }
+
     span {
       font-size: 12px;
       opacity: 0.7;
@@ -39,12 +68,14 @@
       font-weight: bold;
     }
   }
+
   ::ng-deep .p-carousel .p-carousel-content .p-carousel-prev {
     color: white !important;
     border: 1px solid white;
     border-radius: 50%;
     padding: 25px;
   }
+
   ::ng-deep .p-carousel .p-carousel-content .p-carousel-next {
     color: white !important;
     border: 1px solid white;

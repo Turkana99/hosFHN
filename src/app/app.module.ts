@@ -66,6 +66,7 @@ import { UsefulLinkService } from './core/services/usefulLinks.service';
 import { FooterService } from './core/services/footer.service';
 import { FeedbackAndSuggestionsPagesService } from './core/services/feedbackAndSuggestionsPages.service';
 import { ContactService } from './core/services/contact.service';
+import { EmergencyCallComponent } from './shared/emergency-call/emergency-call.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { ContactService } from './core/services/contact.service';
     VideoComponent,
     VideoDetailComponent,
     GalleryDetailComponent,
+    EmergencyCallComponent
   ],
   imports: [
     BrowserModule,

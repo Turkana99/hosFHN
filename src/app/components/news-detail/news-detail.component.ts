@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
-  styleUrl: './news-detail.component.scss'
+  styleUrl: './news-detail.component.scss',
 })
-export class NewsDetailComponent implements OnInit{
+export class NewsDetailComponent implements OnInit {
   title: string = '';
+  fromPage: string = '';
   news = [
     {
       id: 1,
@@ -58,13 +59,22 @@ export class NewsDetailComponent implements OnInit{
         'Hər il iyunun 17-si ölkəmizdə Tibb İşçilərinin Peşə Bayramı Günü kimi qeyd olunur.',
     },
   ];
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       console.log(params);
-      
       this.title = params['title'];
     });
+    this.route.queryParams.subscribe((params) => {
+      this.fromPage = params['from'] || 'news';
+    });
+  }
+  navigateBack(): void {
+    if (this.fromPage === 'main') {
+      this.router.navigate(['/main']);
+    } else {
+      this.router.navigate(['/news']);
+    }
   }
 }

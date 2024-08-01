@@ -16,7 +16,7 @@
       *ngFor="let sec of sections"
     >
       <div class="w-100">
-        <a [routerLink]="['/section-detail', sec.title]">
+        <a [routerLink]="['/section-detail', sec.id]" [queryParams]="{ from: 'sections' }">
           <mat-card class="example-card">
             <img mat-card-image [src]="sec.img" [alt]="sec.img" />
             <mat-card-content class="pt-4 px-0">

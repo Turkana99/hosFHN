@@ -6,11 +6,16 @@
       [autoplayInterval]="2000"
       [numVisible]="3"
       [numScroll]="1"
+      [responsiveOptions]="responsiveOptions"
     >
       <ng-template pTemplate="header">
-        <p class="title py-2">{{homePageInfos.advertisementsPanelTitle}}</p>
+        <p class="title pt-4">{{homePageInfos.advertisementsPanelTitle}}</p>
       </ng-template>
       <ng-template let-adv pTemplate="item">
+        <a
+        [routerLink]="['/announcement-detail', adv.id]"
+        [queryParams]="{ from: 'main' }"
+      >
         <div class="border-1 surface-border border-round my-2 py-5 px-2">
           <div class="mb-3">
             <div class="relative mx-auto">
@@ -23,11 +28,12 @@
           </div>
           <div class="mb-3 font-medium carousel-title">{{ adv.title }}</div>
           <div class="flex justify-content-between align-items-center desc">
-            <div class="mt-0 font-semibold text-xl">
+            <div class="mt-0 font-semibold text-xl content">
               {{ adv.content }}
             </div>
           </div>
         </div>
+        </a>
       </ng-template>
     </p-carousel>
   </div>

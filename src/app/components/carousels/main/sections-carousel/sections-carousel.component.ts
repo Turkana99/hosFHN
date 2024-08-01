@@ -22,20 +22,36 @@ export class SectionsCarouselComponent implements OnInit {
   ngOnInit() {
     this.loadData();
   }
-
+  responsiveOptions: any[] = [
+    {
+      breakpoint: '1024px',
+      numVisible: 3,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '900px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '650px',
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
   loadData() {
     const endpoint = this.langService.getLanguage() || 'Az';
 
     // Increment total requests count for each API call
-    this.langService.incrementTotalRequests(2); 
+    this.langService.incrementTotalRequests(2);
 
     forkJoin({
-      homePageInfos: this.homepagesService.getHomePagesInfo(endpoint).pipe(
-        finalize(() => this.langService.notifyRequestCompleted())
-      ),
-      departments: this.departmentsService.getDepartmentInfos(endpoint).pipe(
-        finalize(() => this.langService.notifyRequestCompleted())
-      ),
+      homePageInfos: this.homepagesService
+        .getHomePagesInfo(endpoint)
+        .pipe(finalize(() => this.langService.notifyRequestCompleted())),
+      departments: this.departmentsService
+        .getDepartmentInfos(endpoint)
+        .pipe(finalize(() => this.langService.notifyRequestCompleted())),
     }).subscribe({
       next: ({ homePageInfos, departments }) => {
         this.homePageInfos = homePageInfos;
