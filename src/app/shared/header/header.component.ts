@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LangService } from '../../core/services/lang.service';
 import { isNgTemplate } from '@angular/compiler';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,10 @@ export class HeaderComponent implements OnInit {
   searchVisible: boolean = false;
   searchQuery: string = '';
 
-  constructor(public langService: LangService) {}
+  constructor(
+    public langService: LangService,
+    public activatedRoute: ActivatedRoute
+  ) {}
   ngOnInit(): void {}
   toggleSearch() {
     this.searchVisible = !this.searchVisible;
@@ -23,6 +27,8 @@ export class HeaderComponent implements OnInit {
 
   changeLanguage(language: string): void {
     this.langService.setLanguage(language);
+    console.log('activatedRoute', this.activatedRoute);
+
     window.location.reload();
   }
 

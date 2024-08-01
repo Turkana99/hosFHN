@@ -20,92 +20,106 @@ import { NewsDetailComponent } from './components/news-detail/news-detail.compon
 import { GalleryDetailComponent } from './components/gallery-detail/gallery-detail.component';
 import { VideoDetailComponent } from './components/video-detail/video-detail.component';
 import { VideoComponent } from './components/video/video.component';
+import { LanguageWrapperComponent } from './components/language-wrapper/language-wrapper.component';
+import { languageResolver } from './core/resolvers/language.resolver';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':lang',
+    component: LanguageWrapperComponent,
+    resolve: { lang: languageResolver },
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'main',
+      },
+      {
+        path: 'main',
+        component: MainComponent,
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+      },
+      {
+        path: 'sections',
+        component: SectionsComponent,
+      },
+      {
+        path: 'section-detail/:title',
+        component: SectionDetailComponent,
+      },
+      {
+        path: 'doctors',
+        component: DoctorsComponent,
+      },
+      {
+        path: 'doctor-detail/:name',
+        component: DoctorDetailsComponent,
+      },
+      {
+        path: 'news',
+        component: NewsComponent,
+      },
+      {
+        path: 'news-detail/:title',
+        component: NewsDetailComponent,
+      },
+      {
+        path: 'gallery',
+        component: GalleryComponent,
+      },
+      {
+        path: 'gallery-detail/:title',
+        component: GalleryDetailComponent,
+      },
+      {
+        path: 'video',
+        component: VideoComponent,
+      },
+      {
+        path: 'video-detail/:title',
+        component: VideoDetailComponent,
+      },
+      {
+        path: 'online-laboratory',
+        component: OnlineLaboratoryComponent,
+      },
+      {
+        path: 'contact',
+        component: ContactComponent,
+      },
+      {
+        path: 'announcements',
+        component: AnnouncementComponent,
+      },
+      {
+        path: 'announcement-detail/:title',
+        component: AnnouncementDetailComponent,
+      },
+      {
+        path: 'information',
+        component: InformationComponent,
+      },
+      {
+        path: 'information-detail/:title',
+        component: InformationDetailComponent,
+      },
+      {
+        path: 'successes',
+        component: SuccessesComponent,
+      },
+      {
+        path: 'successes-detail/:title',
+        component: SuccessesDetailComponent,
+      },
+    ],
+  },
+  {
+    path: '**',
     pathMatch: 'full',
-    redirectTo: '/main',
-  },
-  {
-    path: 'main',
-    component: MainComponent,
-  },
-  {
-    path: 'about',
-    component: AboutComponent,
-  },
-  {
-    path: 'sections',
-    component: SectionsComponent,
-  },
-  {
-    path: 'section-detail/:title',
-    component: SectionDetailComponent,
-  },
-  {
-    path: 'doctors',
-    component: DoctorsComponent,
-  },
-  {
-    path: 'doctor-detail/:name',
-    component: DoctorDetailsComponent,
-  },
-  {
-    path: 'news',
-    component: NewsComponent,
-  },
-  {
-    path: 'news-detail/:title',
-    component: NewsDetailComponent,
-  },
-  {
-    path: 'gallery',
-    component: GalleryComponent,
-  },
-  {
-    path: 'gallery-detail/:title',
-    component: GalleryDetailComponent,
-  },
-  {
-    path: 'video',
-    component: VideoComponent,
-  },
-  {
-    path: 'video-detail/:title',
-    component: VideoDetailComponent,
-  },
-  {
-    path: 'online-laboratory',
-    component: OnlineLaboratoryComponent,
-  },
-  {
-    path: 'contact',
-    component: ContactComponent,
-  },
-  {
-    path: 'announcements',
-    component: AnnouncementComponent,
-  },
-  {
-    path: 'announcement-detail/:title',
-    component: AnnouncementDetailComponent,
-  },
-  {
-    path: 'information',
-    component: InformationComponent,
-  },
-  {
-    path: 'information-detail/:title',
-    component: InformationDetailComponent,
-  },
-  {
-    path: 'successes',
-    component: SuccessesComponent,
-  },
-  {
-    path: 'successes-detail/:title',
-    component: SuccessesDetailComponent,
+    redirectTo: 'az',
   },
 ];
 

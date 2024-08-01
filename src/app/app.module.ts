@@ -67,6 +67,7 @@ import { FooterService } from './core/services/footer.service';
 import { FeedbackAndSuggestionsPagesService } from './core/services/feedbackAndSuggestionsPages.service';
 import { ContactService } from './core/services/contact.service';
 import { EmergencyCallComponent } from './shared/emergency-call/emergency-call.component';
+import { LanguageWrapperComponent } from './components/language-wrapper/language-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +109,8 @@ import { EmergencyCallComponent } from './shared/emergency-call/emergency-call.c
     VideoComponent,
     VideoDetailComponent,
     GalleryDetailComponent,
-    EmergencyCallComponent
+    EmergencyCallComponent,
+    LanguageWrapperComponent,
   ],
   imports: [
     BrowserModule,
@@ -141,7 +143,7 @@ import { EmergencyCallComponent } from './shared/emergency-call/emergency-call.c
     UsefulLinkService,
     FooterService,
     FeedbackAndSuggestionsPagesService,
-    ContactService
+    ContactService,
   ],
   bootstrap: [AppComponent],
 })
