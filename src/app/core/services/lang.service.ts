@@ -10,7 +10,7 @@ export class LangService implements OnInit {
   private requestsCompleted = new BehaviorSubject<number>(0);
   private totalRequests = new BehaviorSubject<number>(0);
   constantNavItem: any = {
-    Az: {
+    az: {
       homePage: 'Ana Səhifə',
       about: 'Haqqımızda',
       departments: 'Şöbələr',
@@ -26,7 +26,7 @@ export class LangService implements OnInit {
       onlineLaboratory: 'Onlayn Laboratoriya',
       contact: 'Əlaqə',
     },
-    En: {
+    en: {
       homePage: 'Home Page',
       about: 'About',
       departments: 'Departments',
@@ -42,7 +42,7 @@ export class LangService implements OnInit {
       onlineLaboratory: 'Online Laboratory',
       contact: 'Contact',
     },
-    Ru: {
+    ru: {
       homePage: 'Домашняя страница',
       about: 'О нас',
       departments: 'Oтделы',
@@ -61,7 +61,7 @@ export class LangService implements OnInit {
   };
 
   constructor() {
-    this.currentLanguage = localStorage.getItem('language') || 'Az';
+    this.currentLanguage = localStorage.getItem('language') || 'az';
   }
 
   ngOnInit(): void {
