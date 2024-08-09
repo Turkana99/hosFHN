@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { LangService } from '../../core/services/lang.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wh-header',
@@ -17,12 +18,13 @@ export class WhHeaderComponent {
       this.searchQuery = ''; // Clear search query when hiding the input
     }
   }
-  constructor(public langService: LangService) {}
+  constructor(public langService: LangService, public router: Router) {}
   changeLanguage(language: string): void {
-    this.langService.setLanguage(language);
-    window.location.reload();
+    this.router.navigate([`/${language}`]);
+    // this.langService.setLanguage(language);
+    // console.log('activatedRoute', this.activatedRoute);
+    // window.location.reload();
   }
-
   @HostListener('window:scroll', [])
   onWindowScroll() {
     const element = document.querySelector('.wh-header') as HTMLElement;

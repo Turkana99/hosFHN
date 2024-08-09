@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LangService } from '../../core/services/lang.service';
 import { isNgTemplate } from '@angular/compiler';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +15,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public langService: LangService,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    public router: Router
   ) {}
   ngOnInit(): void {}
   toggleSearch() {
@@ -26,10 +27,10 @@ export class HeaderComponent implements OnInit {
   }
 
   changeLanguage(language: string): void {
-    this.langService.setLanguage(language);
-    console.log('activatedRoute', this.activatedRoute);
-
-    window.location.reload();
+    this.router.navigate([`/${language}`]);
+    // this.langService.setLanguage(language);
+    // console.log('activatedRoute', this.activatedRoute);
+    // window.location.reload();
   }
 
   @HostListener('window:scroll', [])
